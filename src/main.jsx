@@ -1,10 +1,26 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+/* eslint-disable react/no-children-prop */
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {Restaurant} from "./components/restaraunt/restaurant";
+import { restaurants } from "../materials/mock";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+const rootElement = document.getElementById("root");
+
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(
+  restaurants.map(item => (<Restaurant name={item.name} menu={item.menu} reviews={item.reviews}/>))
+);
+
+// root.render(
+//   React.createElement("button", {
+//     id: "myButton",
+//     onClick: () => {
+//       console.log("Hello!");
+//     },
+//     children: [
+//       React.createElement("span", { children: "Click" }),
+//       React.createElement("span", { children: "Me" }),
+//     ],
+//   })
+// );
