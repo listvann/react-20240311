@@ -12,15 +12,3 @@ root.render(
   restaurants.map(item => (<Restaurant name={item.name} menu={item.menu} reviews={item.reviews}/>))
 );
 
-// root.render(
-//   React.createElement("button", {
-//     id: "myButton",
-//     onClick: () => {
-//       console.log("Hello!");
-//     },
-//     children: [
-//       React.createElement("span", { children: "Click" }),
-//       React.createElement("span", { children: "Me" }),
-//     ],
-//   })
-// );
