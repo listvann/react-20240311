@@ -1,14 +1,16 @@
-import { MenuItem } from '../menuItem/component';
+import { Dish } from "../dish/component.jsx";
 
 export const Menu = ({menu}) => {
-    console.log(menu)
-    return (
-        <ul>
-            {menu.map((menuItem) => (
+    if(!menu?.length){
+        return null;
+    }
+
+    return (<ul>
+            {menu.map(dish =>
+                // eslint-disable-next-line react/jsx-key
                 <li>
-                    <MenuItem menuItem = {menuItem} />
-                </li>                
-            ))}
-        </ul>
-    )
-};
+                    <Dish name={dish.name}/>
+                </li>
+            )}
+        </ul>)
+}

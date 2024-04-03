@@ -1,6 +1,5 @@
-import { Reviews } from '../reviews/component';
-import { Menu } from '../menu/component';
-
+import { Reviews } from "../reviews/component";
+import { Menu } from "../menu/component";
 
 export const Restaurant = ({ restaurant }) => {
     if(!restaurant) {
@@ -43,5 +42,5 @@ export const Restaurant = ({ restaurant }) => {
             <ul>
                 {reviews.map(item=> (<li>{item.text} rating: {item.rating}</li>))}
             </ul>
-            </div>
+    //</div>
 } */
