@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Layout } from "./components/layout/component.jsx";
-import { RestaurantTabs } from "./components/restaurant-tabs/component.jsx";
-import { Restaurant } from "./components/restaurant/component.jsx";
+import { Layout } from './components/layout/component.jsx';
+import { RestaurantTabs } from "./components/restaurant_tabs/component.jsx";
+import { Restaurant } from './components/restaurant/restaurant.jsx';
 import { restaurants } from "./constants/mock.js";
 
 const localStorageKeys = {
