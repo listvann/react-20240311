@@ -1,30 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Layout } from './components/layout/component.jsx';
 import { RestaurantTabs } from "./components/restaurant_tabs/component.jsx";
 import { Restaurant } from './components/restaurant/restaurant.jsx';
 import { restaurants } from "./constants/mock.js";
+import { getCurrentRestaurantIndexStorage, setCurrentRestaurantIndexStorage } from './components/utils/storage.jsx';
 
-const localStorageKeys = {
-    CURRENT_RESTAURANT_INDEX: "current-restaurant-index"
-}
+const active_restaurant_index_storage_key = 'currentRestaurantIndex';
 
 export const App = () => {
-    const [currentRestaurantIndex, setCurrentRestaurantIndex] = useState(() => {
-        return Number(localStorage.getItem(localStorageKeys.CURRENT_RESTAURANT_INDEX));
-    });
+    const [currentRestaurantIndex, setCurrentRestaurantIndex] = useState (() => getCurrentRestaurantIndexStorage (active_restaurant_index_storage_key));
     const currentRestaurant = restaurants[currentRestaurantIndex];
-
-    useEffect(() => {
-        localStorage.setItem(localStorageKeys.CURRENT_RESTAURANT_INDEX, currentRestaurantIndex);
-    }, [currentRestaurantIndex]);
-
 
     return (
         <Layout>
             <RestaurantTabs
                 restaurants={restaurants}
-                onTabClick={setCurrentRestaurantIndex}
-                currentIndex={currentRestaurantIndex}
+                onTabClick={(index) => {
+                    setCurrentRestaurantIndex(index),
+                    setCurrentRestaurantIndexStorage(active_restaurant_index_storage_key, index)
+                }}
+                currentIndex ={currentRestaurantIndex}
             />
             {<Restaurant restaurant={currentRestaurant}/>}
         </Layout>
